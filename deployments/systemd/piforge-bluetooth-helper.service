@@ -1,0 +1,31 @@
+[Unit]
+Description=PiForge restricted Bluetooth helper
+Requires=bluetooth.service
+After=bluetooth.service
+
+[Service]
+Type=simple
+User=root
+Group=dadi
+ExecStart=/usr/local/libexec/piforge-bluetooth-helper
+Restart=on-failure
+RestartSec=2
+RuntimeDirectory=piforge-bluetooth
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=restart
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/run/piforge-bluetooth
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+CapabilityBoundingSet=CAP_NET_ADMIN
+RestrictAddressFamilies=AF_UNIX AF_NETLINK
+MemoryMax=80M
+TasksMax=24
+
+[Install]
+WantedBy=multi-user.target

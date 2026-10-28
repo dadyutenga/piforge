@@ -1,0 +1,12 @@
+frontend/
+.assetcache/
+_screens/
+backend/static/
+backend/piforge
+backend/piforge.exe
+*.db
+*.db-shm
+*.db-wal
+*.log
+.env
+dist/

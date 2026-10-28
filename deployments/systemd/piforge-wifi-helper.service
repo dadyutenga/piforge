@@ -1,0 +1,33 @@
+[Unit]
+Description=PiForge restricted Wi-Fi helper
+Requires=NetworkManager.service
+After=NetworkManager.service
+
+[Service]
+Type=simple
+User=root
+Group=dadi
+ExecStart=/usr/local/libexec/piforge-wifi-helper
+Restart=on-failure
+RestartSec=2
+RuntimeDirectory=piforge-helper
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=restart
+StateDirectory=piforge-helper
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/run/piforge-helper
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6
+MemoryMax=100M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target
